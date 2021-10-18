@@ -18,6 +18,3 @@ make px4_sitl gazebo_gardener_iris
 ```bash
 make px4_sitl gazebo_gardener_drone
 ```
-
-## Известные проблемы
-1. gardener_drone взлетает без камеры. Она остается на земле.
