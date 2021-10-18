@@ -16,8 +16,11 @@ else
     SCRIPT=$(realpath $0)
     SCRIPTPATH=$(dirname $SCRIPT)
 
-    #1 Create a model under Tools/sitl_gazebo/models
+    #0 Remove file of the previous setup
     MODELS=$1/Tools/sitl_gazebo/models
+    rm -rf $MODELS/gardener_iris $MODELS/gardener_fpv_cam $MODELS/gardener_drone
+ 
+    #1 Create a model under Tools/sitl_gazebo/models
     if [ -d $MODELS ]; then
         cp -r $SCRIPTPATH/models/* $MODELS
     else
