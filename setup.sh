@@ -94,5 +94,8 @@ else
         echo "File $FILE_CMAKELISTS not found"
     fi
 
+    #6 Create a launch file
+    cp $SCRIPTPATH/launch/* $1/launch
+
     echo "Setup completed"
 fi

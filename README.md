@@ -12,9 +12,17 @@ git clone --recurse-submodules --branch v1.12.3 https://github.com/PX4/PX4-Autop
 
 ## Запуск
 ```bash
-make px4_sitl gazebo_gardener_iris
+cd <PX4-Autopilot_clone>
+DONT_RUN=1 make px4_sitl_default gazebo
+source ~/catkin_ws/devel/setup.bash    # (optional)
+source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default && \
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd) && \
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
+roslaunch px4 gardener_drone.launch
 ```
-или (с камерой):
+
+Для просмотра изображения с камеры запустите команду ниже и выберите
+/gardener_drone/usb_cam/image_raw:
 ```bash
-make px4_sitl gazebo_gardener_drone
+rqt_image_view rqt_image_view
 ```
