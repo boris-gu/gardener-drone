@@ -18,7 +18,10 @@ else
 
     #0 Remove file of the previous setup
     MODELS=$1/Tools/sitl_gazebo/models
+    rm -rf $1/build
     rm -rf $MODELS/gardener_iris $MODELS/gardener_fpv_cam $MODELS/gardener_drone
+    rm -rf $MODELS/ArUco_*
+    rm -rf $MODELS/gardener_house
  
     #1 Create a model under Tools/sitl_gazebo/models
     if [ -d $MODELS ]; then
