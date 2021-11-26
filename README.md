@@ -8,7 +8,7 @@ Drone model (modified Iris) for Gazebo simulator.
 git clone --recurse-submodules --branch v1.12.3 https://github.com/PX4/PX4-Autopilot.git
 ```
 
-Добавьте модель, запустив `setup.sh PATH_TO_PX4`. Этот скрипт внесет все необходимые изменения в PX4-Autopilot.
+Добавьте модель, запустив `setup.sh <PATH_TO_PX4>`. Этот скрипт внесет все необходимые изменения в PX4-Autopilot.
 
 ## Запуск
 ```bash
