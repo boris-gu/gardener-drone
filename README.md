@@ -28,7 +28,9 @@ rqt_image_view rqt_image_view
 ```
 
 ## Скрипты
-**test_offboard.py** - пример управления дроном (взлет)
+**offboard.py** - пример управления дроном (взлет)
+
+**square_offb.py** - пример управления дроном (полет по квадрату зигзагом)
 
 **aruco_detected.py** - распознавание маркеров, результат публикуется в _gardener_aruco_detected_, можно посмотреть с помощью **rqt_image_view**
 
