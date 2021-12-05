@@ -16,11 +16,11 @@ start_point = [0, 0, 2]
 points = [[0, 0, 5],
           [0, 4, 8],
           [4, 4, 5],
-          [4, 0, 8]] * 2
+          [4, 0, 8]] * 2 + [[0, 0, 5]]
 yaws = [3.141592654,
         1.570796327,
         0,
-        -1.570796327] * 2
+        -1.570796327] * 2 + [3.141592654]
 
 # Обратный вызов для сохранения состояния дрона
 current_state = State()
@@ -38,7 +38,6 @@ def change_pose(point, yaw=None):
     new_pose.pose.position.z = point[2]
     if yaw:
         q = quaternion_from_euler(0, 0, yaw)
-        print(q)
         new_pose.pose.orientation.x = q[0]
         new_pose.pose.orientation.y = q[1]
         new_pose.pose.orientation.z = q[2]
