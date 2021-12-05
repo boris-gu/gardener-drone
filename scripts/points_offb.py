@@ -9,6 +9,7 @@ import mavros
 from geometry_msgs.msg import PoseStamped
 from mavros_msgs.msg import State
 from mavros_msgs.srv import CommandBool, SetMode
+from tf.transformations import quaternion_from_euler
 from threading import Thread
 
 start_point = [0, 0, 2]
@@ -16,6 +17,10 @@ points = [[0, 0, 5],
           [0, 4, 8],
           [4, 4, 5],
           [4, 0, 8]] * 2
+yaws = [3.141592654,
+        1.570796327,
+        0,
+        -1.570796327] * 2
 
 # Обратный вызов для сохранения состояния дрона
 current_state = State()
@@ -26,11 +31,19 @@ def state_cb(state):
     current_state = state
 
 
-def change_pose(point):
+def change_pose(point, yaw=None):
     new_pose = PoseStamped()
     new_pose.pose.position.x = point[0]
     new_pose.pose.position.y = point[1]
     new_pose.pose.position.z = point[2]
+    print(yaw)
+    if yaw:
+        q = quaternion_from_euler(0, 0, yaw)
+        print(q)
+        new_pose.pose.orientation.x = q[0]
+        new_pose.pose.orientation.y = q[1]
+        new_pose.pose.orientation.z = q[2]
+        new_pose.pose.orientation.w = q[3]
     return new_pose
 
 
@@ -87,10 +100,10 @@ if __name__ == '__main__':
             local_pos_pub.publish(pose)
             rate.sleep()
         # Полет по квадрату
-        for point in points:
+        for point, yaw in zip(points, yaws):
             if rospy.is_shutdown():
                 break
-            pose = change_pose(point)
+            pose = change_pose(point, yaw)
             pose.header.stamp = rospy.Time.now()
             rospy.loginfo(f'To point {point}')
             for i in range(80):
