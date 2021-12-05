@@ -36,7 +36,6 @@ def change_pose(point, yaw=None):
     new_pose.pose.position.x = point[0]
     new_pose.pose.position.y = point[1]
     new_pose.pose.position.z = point[2]
-    print(yaw)
     if yaw:
         q = quaternion_from_euler(0, 0, yaw)
         print(q)
