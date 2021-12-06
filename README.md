@@ -20,6 +20,14 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd) && \
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
 roslaunch px4 gardener_drone.launch
 ```
+Если необходимо запустить дрон без в пустом мире, воспользуйтесь командой:
+```bash
+roslaunch px4 gardener_empty.launch
+```
+Если необходимо запустить другую модель добавьте параметр `vehicle:=<name>`. Например, команда ниже запускает пустой мир с дроном без камеры:
+```bash
+roslaunch px4 gardener_empty.launch vehicle:=gardener_iris
+```
 
 Для просмотра изображения с камеры запустите команду ниже и выберите
 /gardener_drone/usb_cam/image_raw:
@@ -31,6 +39,8 @@ rqt_image_view rqt_image_view
 **simple_offb.py** - пример управления дроном (взлет)
 
 **points_offb.py** - более сложный пример управления дроном (полет по квадрату зигзагом с изменением yaw). Проверка состояния дрона вынесена в отдельный поток
+
+**mission_offb.py** - "прокачанная" версия points_offb.py. Дрон не отсылает одну и ту же точку определенное время, а проверяет, достиг ли он цели. Появилась возможность задать yaw по направлению полета.
 
 **aruco_detected.py** - распознавание маркеров, результат публикуется в _gardener_aruco_detected_, можно посмотреть с помощью **rqt_image_view**
 
