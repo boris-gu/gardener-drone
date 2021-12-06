@@ -20,7 +20,7 @@ export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd) && \
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
 roslaunch px4 gardener_drone.launch
 ```
-Если необходимо запустить дрон без в пустом мире, воспользуйтесь командой:
+Если необходимо запустить дрон в пустом мире, воспользуйтесь командой:
 ```bash
 roslaunch px4 gardener_empty.launch
 ```
