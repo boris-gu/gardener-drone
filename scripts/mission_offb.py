@@ -22,10 +22,7 @@ points = [[0, 0, 5],
           [0, 4, 8],
           [4, 4, 5],
           [4, 0, 8]] * 2 + [[0, 0, 5]]
-yaws = [pi,
-        pi/2,
-        0,
-        pi/(-2)] * 2 + [pi]
+yaws = [pi, pi/2, 0, pi/(-2)] * 2 + [pi]
 
 
 # Обратный вызов для сохранения состояния, положения дрона и начальной позиции
@@ -46,9 +43,6 @@ def local_pos(pose):
     if start_pose is None:
         start_pose = current_pose
         start_pose.pose.position.z = start_alt
-        """ start_point = pose[current_pose.pose.position.x,
-                           current_pose.pose.position.y,
-                           start_alt] """
 
 
 def change_pose(point, yaw=None, head_first=False):  # head_first в приоритете
