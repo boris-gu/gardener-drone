@@ -49,7 +49,7 @@ rqt_image_view rqt_image_view
 WASD - YAW и высота
 
 <span style="color:red">**ВНИМАНИЕ**  
-В скрипте **offb_keyboard.py** для чтения клавиатуры необходим pynput. Эта библиотека плохо работает в Wayland. Поэтому либо переключитесь в сеанс X.Org, либо запустите терминал при помощи XWayland (в моем случае это была команда `GDK_BACKEND=x11 tilix`)
+В скрипте **offb_keyboard.py** для чтения клавиатуры необходим pynput. Эта библиотека плохо работает в Wayland. Поэтому либо переключитесь в сеанс X.Org, либо запустите терминал при помощи XWayland (в моем случае это была команда `GDK_BACKEND=x11 tilix`).
 </span>
 
 **aruco_detected.py** - распознавание маркеров, результат публикуется в _gardener_aruco_detected_, можно посмотреть с помощью **rqt_image_view**
