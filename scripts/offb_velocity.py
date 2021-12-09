@@ -5,7 +5,6 @@
 # =============
 
 import rospy
-import mavros
 from math import pi, cos, sin
 from threading import Thread
 from geometry_msgs.msg import Twist
