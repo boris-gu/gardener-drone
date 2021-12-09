@@ -131,8 +131,8 @@ def on_release(key):
 
 
 if __name__ == '__main__':
-    speed_xy = 3
-    speed_z = 1.5  # м/с
+    speed_xy = 4  # м/с
+    speed_z = 1.5
     speed_yaw = pi  # рад/с
 
     preset_vel = [0, 0, 0, 0]
@@ -175,7 +175,7 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         try:
-            if preset_vel[0] == speed_xy and preset_vel[1] == speed_xy:
+            if abs(preset_vel[0]) == speed_xy and abs(preset_vel[1]) == speed_xy:
                 preset_vel[0] = preset_vel[0] * sqrt(2)/2
                 preset_vel[1] = preset_vel[1] * sqrt(2)/2
             # Поворот координат
