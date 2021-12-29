@@ -45,9 +45,10 @@ def callback(data):
 
 
 rospy.init_node('ArUco_Detected', anonymous=True)
-image_sub = rospy.Subscriber('/gardener_drone/usb_cam/image_raw',
+image_sub = rospy.Subscriber('/realsense/color/image_raw',
                              Image, callback, queue_size=20)
 rospy.loginfo('Start Subscriber')
-image_pub = rospy.Publisher('gardener_aruco_detected', Image, queue_size=20)
+image_pub = rospy.Publisher(
+    'realsense/aruco/detected_img', Image, queue_size=20)
 rospy.loginfo('Start Publisher')
 rospy.spin()

@@ -1,18 +1,49 @@
 <?xml version='1.0'?>
 <sdf version='1.5'>
   <model name='gardener_drone'>
+    <pose>0 0 0.1 0 0 0</pose>
 
     <include>
-      <uri>model://gardener_iris</uri>
+      <uri>model://iris</uri>
     </include>
 
+    <!--px4flow camera-->
     <include>
-      <uri>model://gardener_fpv_cam</uri>
-      <pose>0 0 0 0 0 0</pose>
+      <uri>model://px4flow</uri>
+      <pose>0.05 0 -0.05 0 0 0</pose>
     </include>
-    <joint name="fpv_cam_joint" type="fixed">
-      <child>gardener_fpv_cam::link</child>
-      <parent>gardener_iris::base_link</parent>
+
+    <joint name="px4flow_joint" type="revolute">
+      <parent>iris::base_link</parent>
+      <child>px4flow::link</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <upper>0</upper>
+          <lower>0</lower>
+        </limit>
+      </axis>
+    </joint>
+
+    <!--lidar-->
+    <include>
+      <uri>model://lidar</uri>
+      <pose>0 0 -0.05 0 0 0</pose>
+    </include>
+
+    <joint name="lidar_joint" type="fixed">
+      <parent>iris::base_link</parent>
+      <child>lidar::link</child>
+    </joint>
+
+    <!-- realsense -->
+    <include>
+      <uri>model://gardener_realsense_ros</uri>
+      <pose>0.1 0 0.04 0 0 0</pose>
+    </include>
+    <joint name="gardener_realsense_ros_joint" type="fixed">
+      <parent>iris::base_link</parent>
+      <child>gardener_realsense_ros::link</child>
       <axis>
         <xyz>0 0 1</xyz>
         <limit>

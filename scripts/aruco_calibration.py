@@ -67,10 +67,10 @@ class Calibration:
         period = rospy.Duration(period)
         last_time = rospy.Time.now()
 
-        image_sub = rospy.Subscriber('/gardener_drone/usb_cam/image_raw',
+        image_sub = rospy.Subscriber('/realsense/color/image_raw',
                                      Image, callback, queue_size=20)
         rospy.loginfo('Start Subscriber')
-        image_pub = rospy.Publisher('gardener_calibration',
+        image_pub = rospy.Publisher('realsense/aruco/calibration_img',
                                     Image, queue_size=20)
         rospy.loginfo('Start Publisher')
         rospy.spin()

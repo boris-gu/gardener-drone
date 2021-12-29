@@ -19,7 +19,7 @@ else
     #0 Remove file of the previous setup
     MODELS=$1/Tools/sitl_gazebo/models
     rm -rf $1/build
-    rm -rf $MODELS/gardener_iris $MODELS/gardener_fpv_cam $MODELS/gardener_drone
+    rm -rf $MODELS/gardener_fpv_cam $MODELS/gardener_drone
     rm -rf $MODELS/ArUco_*
     rm -rf $MODELS/gardener_house
  
@@ -54,15 +54,8 @@ else
     if [ -f $FILE_SITL_TARGET ]; then
         lineNum=$(grep -n "set(models" $FILE_SITL_TARGET | head -n 1 | cut -d: -f1)
         lineNum=$((lineNum+1))
-        gardIrisOK=$(grep -n "gardener_iris" $FILE_SITL_TARGET | head -n 1 | cut -d: -f1)
-        if [ -z $gardIrisOK ]; then
-            sed -i "${lineNum}i \\\tgardener_iris" $FILE_SITL_TARGET
-        else
-            echo -en "${YELLOW}[WARNING]: ${NOCOLOR}"
-            echo "gardener_iris already contains in sitl_target.cmake"
-        fi
         gardDroneOK=$(grep -n "gardener_drone" $FILE_SITL_TARGET | head -n 1 | cut -d: -f1)
-        if [ -z $gardIrisOK ]; then
+        if [ -z $gardDroneOK ]; then
             sed -i "${lineNum}i \\\tgardener_drone" $FILE_SITL_TARGET
         else
             echo -en "${YELLOW}[WARNING]: ${NOCOLOR}"
@@ -78,15 +71,8 @@ else
     if [ -f $FILE_CMAKELISTS ]; then
         lineNum=$(grep -n "px4_add_romfs_files(" $FILE_CMAKELISTS | head -n 1 | cut -d: -f1)
         lineNum=$((lineNum+1))
-        gardIrisOK=$(grep -n "131301_gardener_iris" $FILE_CMAKELISTS | head -n 1 | cut -d: -f1)
-        if [ -z $gardIrisOK ]; then
-            sed -i "${lineNum}i \\\t131301_gardener_iris" $FILE_CMAKELISTS
-        else
-            echo -en "${YELLOW}[WARNING]: ${NOCOLOR}"
-            echo "gardener_iris already contains in CMakeLists.txt"
-        fi
         gardDroneOK=$(grep -n "131302_gardener_drone" $FILE_CMAKELISTS | head -n 1 | cut -d: -f1)
-        if [ -z $gardIrisOK ]; then
+        if [ -z $gardDroneOK ]; then
             sed -i "${lineNum}i \\\t131302_gardener_drone" $FILE_CMAKELISTS
         else
             echo -en "${YELLOW}[WARNING]: ${NOCOLOR}"

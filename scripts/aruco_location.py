@@ -29,6 +29,7 @@ def callback(data):
                                                           cameraMatrix=camera_matrix,
                                                           distCoeff=dist_coef)
     if np.all(ids is not None):
+        # TODO: ПОЧИНИТЬ (возможно только калибровка)
         rvec, tvec, markerPoints = aruco.estimatePoseSingleMarkers(corners, 0.2, camera_matrix,
                                                                    dist_coef)
         for i in range(0, len(ids)):
@@ -55,9 +56,10 @@ aruco_dict = aruco.Dictionary_get(aruco.DICT_4X4_50)
 parameters = aruco.DetectorParameters_create()
 
 rospy.init_node('ArUco_Detected', anonymous=True)
-image_sub = rospy.Subscriber('/gardener_drone/usb_cam/image_raw',
+image_sub = rospy.Subscriber('/realsense/color/image_raw',
                              Image, callback, queue_size=20)
 rospy.loginfo('Start Subscriber')
-image_pub = rospy.Publisher('gardener_aruco_location', Image, queue_size=20)
+image_pub = rospy.Publisher(
+    'realsense/aruco/location_img', Image, queue_size=20)
 rospy.loginfo('Start Publisher')
 rospy.spin()
