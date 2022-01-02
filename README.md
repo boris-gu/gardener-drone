@@ -1,6 +1,6 @@
 # gardener-drone
 Drone model (modified Iris) for Gazebo simulator.  
-Модифицированный Iris c ROS камерой для Gazebo simulator.
+Модифицированный Iris c оптическим потоком и камерой Intel RealSense для Gazebo simulator.
 
 Так как PX4-Autopilot быстро развивается, за основу взята стабильная версия 1.12.3.  
 Клонировать:  
@@ -24,16 +24,26 @@ roslaunch px4 gardener_drone.launch
 ```bash
 roslaunch px4 gardener_empty.launch
 ```
-Если необходимо запустить другую модель добавьте параметр `vehicle:=<name>`. Например, команда ниже запускает пустой мир с дроном без камеры:
+Если необходимо запустить другую модель добавьте параметр `vehicle:=<name>`. Например, команда ниже запускает пустой мир со стандартным дроном:
 ```bash
-roslaunch px4 gardener_empty.launch vehicle:=gardener_iris
+roslaunch px4 gardener_empty.launch vehicle:=iris
 ```
 
-Для просмотра изображения с камеры запустите команду ниже и выберите
-/gardener_drone/usb_cam/image_raw:
-```bash
-rqt_image_view rqt_image_view
-```
+## Данные с дрона
+Дрон публикует в топики ROS данные с камеры RealSense.
+
+Для просмотра изображения с камеры запустите команду `rqt_image_view` и выберите
+/realsense/color/image_raw.
+![rqt_image_view](/img/001_rqt_image_view.png "Отображение топика /realsense/color/image_raw")
+
+
+Для просмотра облака точек, генерируемое камерой RealSense совершите следующие шаги:
+1. Запустите команду `rviz`
+2. Слева в поле "Fixed Frame" вместо "map" введите "gardener"
+3. Слева внизу нажмите кнопку Add->By topic->realsense/depth/points/PointCloud2, нажмите OK
+
+![gazebo](/img/002_gazebo.png "Отображение коптера в Gazebo")
+![rviz](/img/003_rviz.png "Облако точек в rviz")
 
 ## Скрипты
 **offb_simple.py** - пример управления дроном (взлет)
