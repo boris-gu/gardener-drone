@@ -166,7 +166,7 @@
           <pointCloudTopicName>depth/points</pointCloudTopicName>
           <cameraInfoTopicName>camera_info</cameraInfoTopicName>
           <cameraName>realsense</cameraName>
-          <frameName>gardener</frameName>
+          <frameName>gardener_raw</frameName>
           <pointCloudCutoff>0</pointCloudCutoff>
           <distortionK1>0</distortionK1>
           <distortionK2>0</distortionK2>

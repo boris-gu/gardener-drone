@@ -52,4 +52,6 @@
         <arg name="fcu_url" value="$(arg fcu_url)"/>
         <arg name="respawn_mavros" value="$(arg respawn_mavros)"/>
     </include>
+    <!-- Fixing the PointCloud2 display in rviz -->
+    <node pkg="tf2_ros" type="static_transform_publisher" name="realsense_tf" args="0 0.5 0 0 -1.570796 1.570796 gardener_raw gardener"/>
 </launch>
