@@ -50,7 +50,8 @@ class Calibration:
                 else:
                     self.__images.append(frame)
                     last_time = now
-                    rospy.loginfo('Added image')
+                    rospy.loginfo(
+                        f'Added image {len(self.__images)}/{num_of_images}')
                     cv2.putText(frame, str(len(self.__images)), (20, 60), cv2.FONT_HERSHEY_SIMPLEX,
                                 1, (255, 0, 60), 2, cv2.LINE_AA)
 
