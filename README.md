@@ -22,11 +22,11 @@ roslaunch px4 gardener_drone.launch
 ```
 Если необходимо запустить дрон в пустом мире, воспользуйтесь командой:
 ```bash
-roslaunch px4 gardener_empty.launch
+roslaunch px4 mavros_posix_sitl.launch vehicle:=gardener_drone
 ```
-Если необходимо запустить другую модель добавьте параметр `vehicle:=<name>`. Например, команда ниже запускает пустой мир со стандартным дроном:
+Если необходимо запустить другую модель добавьте параметр `vehicle:=<name>`. Например:
 ```bash
-roslaunch px4 gardener_empty.launch vehicle:=iris
+roslaunch px4 gardener_drone.launch vehicle:=iris
 ```
 
 ## Данные с дрона
