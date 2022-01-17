@@ -59,7 +59,10 @@ def check_state():
             if prev_state.armed != current_state.armed:
                 rospy.loginfo('ARMED')
             prev_state = current_state
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         except rospy.ROSInterruptException:
             pass
 
@@ -79,7 +82,10 @@ if __name__ == '__main__':
 
     # Ожидаем связь между МАВРОС и автопилотом
     while not rospy.is_shutdown() and not current_state.connected:
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
 
     # Дрон не перейдет в режим OFFBOARD, пока не начнется потоковая передача значений
     thread_state = Thread(target=check_state, daemon=True)
@@ -93,7 +99,10 @@ if __name__ == '__main__':
             if rospy.is_shutdown():
                 break
             local_pos_pub.publish(pose)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         # Полет по квадрату
         for point, yaw in zip(points, yaws):
             if rospy.is_shutdown():
@@ -103,7 +112,10 @@ if __name__ == '__main__':
             rospy.loginfo(f'To point {point}')
             for i in range(80):
                 local_pos_pub.publish(pose)
-                rate.sleep()
+                try:
+                    rate.sleep()
+                except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                    pass
         # Висение на месте
         pose = change_pose(start_point)
         pose.header.stamp = rospy.Time.now()
@@ -111,6 +123,9 @@ if __name__ == '__main__':
             if rospy.is_shutdown():
                 break
             local_pos_pub.publish(pose)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
     except rospy.ROSInterruptException:
         pass

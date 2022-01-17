@@ -30,6 +30,7 @@ vel_yaw = 2*pi/7.2
 # Так должно быть в идеале, но из-за физики реальная угловая (и линейная) скорость
 # может отличаться от заданной, поэтому в конце скрипта коптер может не находиться
 # в первоначальном положении
+# ИЗ-ЗА ЭТОГО РЕЗУЛЬТАТ СКРИПТА НЕПРЕДСКАЗУЕМ
 
 
 def state_cb(state):
@@ -64,7 +65,10 @@ def check_state():
             if prev_state.armed != current_state.armed:
                 rospy.loginfo('ARMED')
             prev_state = current_state
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         except rospy.ROSInterruptException:
             pass
 
@@ -84,7 +88,10 @@ if __name__ == '__main__':
 
     # Ожидаем связь между МАВРОС и автопилотом
     while not rospy.is_shutdown() and not current_state.connected:
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
 
     # Дрон не перейдет в режим OFFBOARD, пока не начнется потоковая передача значений
     thread_state = Thread(target=check_state, daemon=True)
@@ -97,30 +104,45 @@ if __name__ == '__main__':
             if rospy.is_shutdown():
                 break
             local_vel_pub.publish(vel)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         # Полет по спирали вверх
         for x, y in zip(vel_x, vel_y):
             vel = change_velocity(x, y, vel_z_up, vel_yaw)
             for i in range(2):
                 local_vel_pub.publish(vel)
-                rate.sleep()
+                try:
+                    rate.sleep()
+                except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                    pass
         # Полет по спирали вниз
         for x, y in zip(vel_x, vel_y):
             vel = change_velocity(x, y, vel_z_down, vel_yaw)
             for i in range(2):
                 local_vel_pub.publish(vel)
-                rate.sleep()
+                try:
+                    rate.sleep()
+                except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                    pass
         # "Замыкание" круга
         vel = change_velocity(1, 0, 0, vel_yaw)
         for i in range(2):
             local_vel_pub.publish(vel)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         # Зависнуть
         vel = change_velocity(0, 0, 0)
         for i in range(200):
             if rospy.is_shutdown():
                 break
             local_vel_pub.publish(vel)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
     except rospy.ROSInterruptException:
         pass

@@ -87,7 +87,10 @@ def check_state():
             if prev_state.armed != current_state.armed:
                 rospy.loginfo('ARMED')
             prev_state = current_state
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         except rospy.ROSInterruptException:
             pass
 
@@ -110,7 +113,10 @@ if __name__ == '__main__':
 
     # Ожидаем связь между МАВРОС и автопилотом
     while not rospy.is_shutdown() and not current_state.connected:
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
 
     # Дрон не перейдет в режим OFFBOARD, пока не начнется потоковая передача значений
     thread_state = Thread(target=check_state, daemon=True)
@@ -118,7 +124,10 @@ if __name__ == '__main__':
 
     try:
         while start_pose is None:
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         # Взлет
         start_pose.header.stamp = rospy.Time.now()
         rospy.loginfo('TAKEOFF')
@@ -127,7 +136,10 @@ if __name__ == '__main__':
                        start_pose.pose.position.z]
         while distance(current_pose, start_point) > acceptable_error:
             local_pos_pub.publish(start_pose)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
         # Полет по квадрату
         for point, yaw in zip(points, yaws):
             # pose = change_pose(point, yaw)  # Установка yaw как в points_offb
@@ -136,13 +148,19 @@ if __name__ == '__main__':
             rospy.loginfo(f'To point {point}')
             while distance(current_pose, point) > acceptable_error:
                 local_pos_pub.publish(pose)
-                rate.sleep()
+                try:
+                    rate.sleep()
+                except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                    pass
         # Посадка
         pose = change_pose(start_point)
         pose.header.stamp = rospy.Time.now()
         rospy.loginfo('LANDING')
         while distance(current_pose, start_point) > acceptable_error:
             local_pos_pub.publish(start_pose)
-            rate.sleep()
+            try:
+                rate.sleep()
+            except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+                pass
     except rospy.ROSInterruptException:
         pass

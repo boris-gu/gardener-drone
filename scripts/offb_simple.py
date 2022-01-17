@@ -33,7 +33,10 @@ if __name__ == '__main__':
 
     # Ожидаем связь между МАВРОС и автопилотом
     while not rospy.is_shutdown() and not current_state.connected:
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
 
     pose = PoseStamped()
     pose.pose.position.x = 0
@@ -44,7 +47,10 @@ if __name__ == '__main__':
     # 100 - произвольное число
     for i in range(100):
         local_pos_pub.publish(pose)
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
 
     last_request = rospy.Time.now()
     while not rospy.is_shutdown():
@@ -61,4 +67,7 @@ if __name__ == '__main__':
 
         pose.header.stamp = rospy.Time.now()
         local_pos_pub.publish(pose)
-        rate.sleep()
+        try:
+            rate.sleep()
+        except rospy.exceptions.ROSTimeMovedBackwardsException as err:
+            pass
