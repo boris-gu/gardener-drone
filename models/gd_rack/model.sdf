@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <sdf version="1.5">
-  <model name="Flowers 1 mid">
-    <pose>0 0 0.1 0 0 0</pose>
+  <model name="Rack">
+    <pose>0 0 0 0 0 0</pose>
     <static>true</static>
     <link name="link">
       <inertial>
