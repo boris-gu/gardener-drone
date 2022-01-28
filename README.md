@@ -29,6 +29,15 @@ roslaunch px4 mavros_posix_sitl.launch vehicle:=gardener_drone
 roslaunch px4 gardener_drone.launch vehicle:=iris
 ```
 
+## Настройка
+Настройка дрона производится в программе QGroundControl.  
+*Выбор датчиков, которые используются EKF2 для вычисления состояния коптера.  
+Необходимо поставить 2 или галочку "use optical flow"*  
+**EKF2_AID_MASK = 2**  
+*Максимальная горизонтальная скорость в режимах POSCTL, OFFBOARD, AUTO  
+Необходимо снизить для более точного позиционирования с помощью оптического потока*  
+**MPC_XY_VEL_MAX = 2 м/с**  
+
 ## Данные с дрона
 Дрон публикует в топики ROS данные с камеры RealSense.
 
