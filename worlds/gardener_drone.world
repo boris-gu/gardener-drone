@@ -13,9 +13,10 @@
     <include>
       <uri>model://asphalt_plane</uri>
     </include>
-    <!-- <include>
-      <uri>model://gardener_house</uri>
-    </include> -->
+    <include>
+      <uri>model://gardener_house_2</uri>
+      <pose>2 3.5 0 0 0 0</pose>
+    </include>
     <!-- 1 -->
     <include>
       <name>Rack 0</name>
