@@ -1,0 +1,3 @@
+[submodule "drone-api"]
+	path = drone-api
+	url = https://github.com/boris-gu/drone-api
