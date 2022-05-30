@@ -45,6 +45,10 @@ def callback(data):
         for i in range(len(ids)):
             aruco.drawAxis(frame, camera_matrix,
                            dist_coef, rvec[i], tvec[i], aruco_6size)
+            cv2.putText(frame, str(ids[i]), tuple(corners[i][0][2]),
+                        FONT, 1, (255, 255, 255), 3, cv2.LINE_AA)
+            cv2.putText(frame, str(ids[i]), tuple(corners[i][0][2]),
+                        FONT, 1, (0, 0, 0), 1, cv2.LINE_AA)
             """ cv2.putText(frame, ' id' + str(ids[0])[1:-1], (20, 30), FONT,
                         1, (255, 255, 255), 3, cv2.LINE_AA)
             cv2.putText(frame, ' id' + str(ids[0])[1:-1], (20, 30), FONT,
@@ -53,23 +57,6 @@ def callback(data):
             x, y, z, roll, pitch, yaw = Camera_api.marker_local_pose(rvec[0][0], tvec[0][0],
                                                                      drone_pose)
             marker_pose = [x, y, z, roll, pitch, yaw] """
-            # Белая обводка и черный текст
-            """ cv2.putText(frame, str(toFixed(x, 3)+'    ' +
-                                   toFixed(y, 3) + '    ' +
-                                   toFixed(z, 3) + '    '), (20, 90),
-                        FONT, 1, (255, 255, 255), 3, cv2.LINE_AA)
-            cv2.putText(frame, str(toFixed(x, 3) + '    ' +
-                                   toFixed(y, 3) + '    ' +
-                                   toFixed(z, 3) + '    '), (20, 90),
-                        FONT, 1, (0, 0, 0), 1, cv2.LINE_AA)
-            cv2.putText(frame, str(toFixed(roll, 3)+'    ' +
-                                   toFixed(pitch, 3) + '    ' +
-                                   toFixed(yaw, 3)), (20, 120),
-                        FONT, 1, (255, 255, 255), 3, cv2.LINE_AA)
-            cv2.putText(frame, str(toFixed(roll, 3) + '    ' +
-                                   toFixed(pitch, 3) + '    ' +
-                                   toFixed(yaw, 3)), (20, 120),
-                        FONT, 1, (0, 0, 0), 1, cv2.LINE_AA) """
     """ else:
         # Сбрасываем roll маркера, чтобы, в случае потери маркера, дрон не продолжал кружиться
         marker_pose[3] = 0
@@ -88,8 +75,13 @@ def callback(data):
     global marker_pose
     if np.all(ids is not None):
         for i in range(len(ids)):
+            print(corners[i][0][2])
             aruco.drawAxis(frame, camera_matrix,
                            dist_coef, rvec[i], tvec[i], aruco_4size)
+            cv2.putText(frame, str(ids[i]), tuple(corners[i][0][2]),
+                        FONT, 1, (255, 255, 255), 3, cv2.LINE_AA)
+            cv2.putText(frame, str(ids[i]), tuple(corners[i][0][2]),
+                        FONT, 1, (0, 0, 0), 1, cv2.LINE_AA)
 
     try:
         image_pub.publish(bridge.cv2_to_imgmsg(frame, 'bgr8'))
