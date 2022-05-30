@@ -13,152 +13,152 @@
     <include>
       <uri>model://asphalt_plane</uri>
     </include>
-    <include>
+    <!-- <include>
       <uri>model://gardener_house_2</uri>
       <pose>2 3.5 0 0 0 0</pose>
-    </include>
+    </include> -->
     <!-- 1 -->
     <include>
       <name>Rack 0</name>
       <uri>model://gardener_rack</uri>
-      <pose>2.5 3.5 0.05 0 0 0</pose>
+      <pose>1.5 3.5 0.05 0 0 0</pose>
     </include>
     <include>
       <name>ArUco 6X6 50 No.0 Right</name>
       <uri>model://ArUco_6X6_50_0</uri>
-      <pose>2.3 0.5 1.8 1.5708 0 0</pose>
+      <pose>1.3 0.5 1.8 1.5708 0 0</pose>
     </include>
     <include>
       <name>ArUco 6X6 50 No.0 Left</name>
       <uri>model://ArUco_6X6_50_0</uri>
-      <pose>2.3 6.5 1.8 1.5708 0 3.1416</pose>
+      <pose>1.3 6.5 1.8 1.5708 0 3.1416</pose>
     </include>
     <!-- Средняя полка -->
     <include>
       <name>Bush low 1 000</name>
       <uri>model://gardener_bush_low_1</uri>
-      <pose>2.2 1 1.1 0 0 0</pose>
+      <pose>1.2 1 1.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush low 2 001</name>
       <uri>model://gardener_bush_low_2</uri>
-      <pose>2.2 2.3 1.1 0 0 0</pose>
+      <pose>1.2 2.3 1.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush low 3 002</name>
       <uri>model://gardener_bush_low_3</uri>
-      <pose>2.2 4 1.1 0 0 0</pose>
+      <pose>1.2 4 1.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush low 4 003</name>
       <uri>model://gardener_bush_low_4</uri>
-      <pose>2.2 5.3 1.1 0 0 0</pose>
+      <pose>1.2 5.3 1.1 0 0 0</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.0 [0]</name>
       <uri>model://ArUco_4X4_1000_0</uri>
-      <pose>1.962 0.833 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 0.833 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.1 [0]</name>
       <uri>model://ArUco_4X4_1000_1</uri>
-      <pose>1.962 1.888 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 1.888 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.2 [0]</name>
       <uri>model://ArUco_4X4_1000_2</uri>
-      <pose>1.962 2.133 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 2.133 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.3 [0]</name>
       <uri>model://ArUco_4X4_1000_3</uri>
-      <pose>1.962 3.188 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 3.188 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.4 [0]</name>
       <uri>model://ArUco_4X4_1000_4</uri>
-      <pose>1.962 3.833 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 3.833 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.5 [0]</name>
       <uri>model://ArUco_4X4_1000_5</uri>
-      <pose>1.962 4.888 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 4.888 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.6 [0]</name>
       <uri>model://ArUco_4X4_1000_6</uri>
-      <pose>1.962 5.133 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 5.133 1.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.7 [0]</name>
       <uri>model://ArUco_4X4_1000_7</uri>
-      <pose>1.962 6.188 1.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 6.188 1.172 1.5708 0 -1.5708</pose>
     </include>
     <!-- Верхняя полка -->
     <include>
       <name>Bush low 1 010</name>
       <uri>model://gardener_bush_low_1</uri>
-      <pose>2.2 1 2.1 0 0 0</pose>
+      <pose>1.2 1 2.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush high 2 011</name>
       <uri>model://gardener_bush_high_2</uri>
-      <pose>2.2 2.3 2.1 0 0 0</pose>
+      <pose>1.2 2.3 2.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush low 3 012</name>
       <uri>model://gardener_bush_low_3</uri>
-      <pose>2.2 4 2.1 0 0 0</pose>
+      <pose>1.2 4 2.1 0 0 0</pose>
     </include>
     <include>
       <name>Bush high 4 013</name>
       <uri>model://gardener_bush_high_4</uri>
-      <pose>2.2 5.3 2.1 0 0 0</pose>
+      <pose>1.2 5.3 2.1 0 0 0</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.15 [0]</name>
       <uri>model://ArUco_4X4_1000_15</uri>
-      <pose>1.962 0.833 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 0.833 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.14 [0]</name>
       <uri>model://ArUco_4X4_1000_14</uri>
-      <pose>1.962 1.888 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 1.888 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.13 [0]</name>
       <uri>model://ArUco_4X4_1000_13</uri>
-      <pose>1.962 2.133 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 2.133 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.12 [0]</name>
       <uri>model://ArUco_4X4_1000_12</uri>
-      <pose>1.962 3.188 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 3.188 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.11 [0]</name>
       <uri>model://ArUco_4X4_1000_11</uri>
-      <pose>1.962 3.833 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 3.833 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.10 [0]</name>
       <uri>model://ArUco_4X4_1000_10</uri>
-      <pose>1.962 4.888 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 4.888 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.9 [0]</name>
       <uri>model://ArUco_4X4_1000_9</uri>
-      <pose>1.962 5.133 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 5.133 2.172 1.5708 0 -1.5708</pose>
     </include>
     <include>
       <name>ArUco 4X4 1000 No.8 [0]</name>
       <uri>model://ArUco_4X4_1000_8</uri>
-      <pose>1.962 6.188 2.172 1.5708 0 -1.5708</pose>
+      <pose>0.962 6.188 2.172 1.5708 0 -1.5708</pose>
     </include>
 
 
     <!-- 2 -->
-    <include>
+    <!-- <include>
       <name>Rack 1</name>
       <uri>model://gardener_rack</uri>
       <pose>5.5 3.5 0.05 0 0 0</pose>
@@ -173,7 +173,7 @@
       <uri>model://ArUco_6X6_50_1</uri>
       <pose>5.3 6.5 1.8 1.5708 0 3.1416</pose>
     </include>
-    <!-- Средняя полка -->
+    <!- - Средняя полка - ->
     <include>
       <name>Bush low 4 100</name>
       <uri>model://gardener_bush_low_4</uri>
@@ -234,7 +234,7 @@
       <uri>model://ArUco_4X4_1000_7</uri>
       <pose>4.962 6.188 1.172 1.5708 0 -1.5708</pose>
     </include>
-    <!-- Верхняя полка -->
+    <!- - Верхняя полка - ->
     <include>
       <name>Bush low 3 110</name>
       <uri>model://gardener_bush_low_3</uri>
@@ -295,7 +295,7 @@
       <uri>model://ArUco_4X4_1000_8</uri>
       <pose>4.962 6.188 2.172 1.5708 0 -1.5708</pose>
     </include>
-
+ -->
 
     <physics name='default_physics' default='0' type='ode'>
       <gravity>0 0 -9.8066</gravity>
